@@ -3,7 +3,7 @@
 
 ### ** Blur all you need **
 
-# Team: ☎031 Gongsamil
+# Team: Gongsamil ( ☎031 )
 
 ### Team Project Name : 아직 미정
 
