@@ -4,7 +4,7 @@ import os.path as osp
 
 import mmcv
 import numpy as np
-
+import random
 prog_description = '''K-Fold coco split.
 
 To split coco data for semi-supervised object detection:
@@ -62,43 +62,52 @@ def split_coco(data_root, out_dir, percent, fold):
         mmcv.dump(sub_anns, f'{out_dir}/{name}.json')
 
     # set random seed with the fold
-    np.random.seed(fold)
+
+    #나중에 진짜 TRAIN 할때 SEED 해제
+    random.seed(42)
     anns = mmcv.load(data_root)
 
     image_list = anns['images']
-    labeled_total = int(percent * len(image_list))
-    labeled_inds = set(
-        np.random.choice(range(len(image_list)), size=labeled_total,replace=False))
-    labeled_ids, labeled_images, validation_images = [], [], []
-
-    for i in range(len(image_list)):
-        if i in labeled_inds:
-            labeled_images.append(image_list[i])
-            labeled_ids.append(image_list[i]['id'])
+    images_shuffled=list(range(len(image_list)))
+    random.shuffle(images_shuffled) #이거 return값 없다
+    validation_length=int((1-percent)*len(image_list))
+    for k in range(fold):
+        labeled_inds=[]
+        if k<fold-1:
+            validation_inds=set(images_shuffled[k*validation_length:(k+1)*validation_length])
         else:
-            validation_images.append(image_list[i])
+            validation_inds=set(images_shuffled[k*validation_length:])
+        labeled_ids, labeled_images, validation_images = [], [], []
+        for i in range(len(image_list)):
+            if i not in validation_inds:
+                labeled_inds.append(i)
+        for i in range(len(image_list)):
+            if i in labeled_inds:
+                labeled_images.append(image_list[i])
+                labeled_ids.append(image_list[i]['id'])
+            else:
+                validation_images.append(image_list[i])
 
-    # get all annotations of labeled images
-    labeled_ids = set(labeled_ids)
-    labeled_annotations, validation_annotation = [], []
+        # get all annotations of labeled images
+        labeled_ids = set(labeled_ids)
+        labeled_annotations, validation_annotation = [], []
 
-    for ann in anns['annotations']:
-        if ann['image_id'] in labeled_ids: #id 별 split 과정
-            labeled_annotations.append(ann)
-        else:
-            validation_annotation.append(ann)
+        for ann in anns['annotations']:
+            if ann['image_id'] in labeled_ids: #id 별 split 과정
+                labeled_annotations.append(ann)
+            else:
+                validation_annotation.append(ann)
 
-    # save train, validation file based on percentage
-    labeled_name = f'train_fold_{fold}_of_{args.fold}'
-    validation_name = f'validation_fold_{fold}_of_{args.fold}'
+        # save train, validation file based on percentage
+        labeled_name = f'train_fold_{k+1}_of_{args.fold}'
+        validation_name = f'validation_fold_{k+1}_of_{args.fold}'
 
-    save_anns(labeled_name, labeled_images, labeled_annotations)
-    save_anns(validation_name, validation_images, validation_annotation)
+        save_anns(labeled_name, labeled_images, labeled_annotations)
+        save_anns(validation_name, validation_images, validation_annotation)
 
 
 if __name__=="__main__":
     args = parse_args()
-    for fold in range(1,args.fold+1):
-        split_coco(args.data_root, args.out_dir,args.percent,fold)
+    split_coco(args.data_root, args.out_dir,args.percent,args.fold)
         
         
