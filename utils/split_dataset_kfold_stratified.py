@@ -67,7 +67,7 @@ def split_coco_stratified(data_root, out_dir, fold):
     X = np.ones((len(anns['annotations']),1)) #
     y = np.array([v[1] for v in var]) #category_id
     groups = np.array([v[0] for v in var]) #image_id
-    cv = StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=42)
+    cv = StratifiedGroupKFold(n_splits=fold, shuffle=True, random_state=42)
     image_list = anns['images']
     k=0
     for train_idx, _ in cv.split(X, y, groups):
