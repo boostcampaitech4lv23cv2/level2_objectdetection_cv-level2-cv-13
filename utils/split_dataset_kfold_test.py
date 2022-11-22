@@ -12,7 +12,7 @@ def parse_args():
         '--out-dir',
         type=str,
         help='The output directory of coco semi-supervised annotations.',
-        default='/opt/ml/level2_objectdetection_cv-level2-cv-13/fold_dataset')
+        default='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset')
     parser.add_argument(
         '--percent',
         type=float,
