@@ -51,3 +51,5 @@ train_pipeline = [
         meta_keys=('filename', 'ori_shape', 'img_shape', 'img_norm_cfg',
                    'pad_shape', 'scale_factor'))
 ]
+
+work_dir = '/opt/ml/level2_objectdetection_cv-level2-cv-13/outputs/SwinTransformer_FPN_DyHead_AdamW_5e-05_12_CLAHE'
