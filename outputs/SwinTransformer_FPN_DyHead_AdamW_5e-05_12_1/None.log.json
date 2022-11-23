@@ -1,0 +1,4 @@
+{"hook_msgs": {}}
+{"mode": "train", "epoch": 1, "iter": 50, "lr": 5e-05, "memory": 26675, "data_time": 0.04984, "loss_cls": 1.00287, "loss_bbox": 0.99329, "loss_centerness": 0.64547, "loss": 2.64163, "time": 1.2194}
+{"mode": "train", "epoch": 1, "iter": 100, "lr": 5e-05, "memory": 26675, "data_time": 0.00479, "loss_cls": 0.85352, "loss_bbox": 1.01403, "loss_centerness": 0.64133, "loss": 2.50888, "time": 1.17402}
+{"mode": "train", "epoch": 1, "iter": 150, "lr": 5e-05, "memory": 26675, "data_time": 0.0051, "loss_cls": 0.77797, "loss_bbox": 1.02013, "loss_centerness": 0.63905, "loss": 2.43716, "time": 1.18186}
