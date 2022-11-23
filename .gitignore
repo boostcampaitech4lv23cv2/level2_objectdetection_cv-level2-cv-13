@@ -5,3 +5,4 @@ ensemble_result/*
 *.log
 *.wandb
 wandb/*
+nohup.out
