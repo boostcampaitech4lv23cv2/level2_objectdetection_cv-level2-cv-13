@@ -21,7 +21,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='eff_retinanet.py'
+        default='retinanet_swin-t-p4-w7_fpn_1x_coco.py'
         )
     args = parser.parse_args()
     return args
@@ -68,7 +68,7 @@ if __name__ == "__main__":
         shuffle=False)
 
     # checkpoint path
-    checkpoint_path = os.path.join(cfg.work_dir, 'latest.pth')
+    checkpoint_path = os.path.join(cfg.work_dir, 'epoch_49.pth')
     model = build_detector(cfg.model, test_cfg=cfg.get('test_cfg')) # build detector
     checkpoint = load_checkpoint(model, checkpoint_path, map_location='cpu') # ckpt load
     model.CLASSES = dataset.CLASSES
