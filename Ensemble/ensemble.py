@@ -2,6 +2,7 @@ import argparse
 from ensemble_boxes import *
 import pandas as pd
 import os
+import numpy as np
 #csv import
 # k-fold 5개 csv 특정 폴더 안에 넣고 parser로 folder 위치 변경하게 설정
 # label, score, xmin, ymin, xmax, ymax 
@@ -21,7 +22,7 @@ def parse_args():
         '--iou-thr',
         type= float,
         help='The threshold of IoU to ensemble.',
-        default= 0.5)
+        default= 0.8)
     parser.add_argument(
         '--skip-box-thr',
         type= float,
@@ -56,7 +57,10 @@ def ensemble(csv_root,out_dir):
         scores_list = []
         labels_list = []
         for df in df_list:
-            v=df['PredictionString'][idx].split()
+            if type(df['PredictionString'][idx])==str:
+                v=df['PredictionString'][idx].split()
+            else:
+                continue
             labels=[]
             boxes=[]
             scores=[]
