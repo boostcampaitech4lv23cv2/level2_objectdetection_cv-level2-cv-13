@@ -59,3 +59,4 @@ test_pipeline = [
             dict(type='Collect', keys=['img']),
         ])
 ]
+work_dir = '/opt/ml/level2_objectdetection_cv-level2-cv-13/outputs/SwinTransformer_FPN_DyHead_AdamW_5e-05_12_1_sharpen'
