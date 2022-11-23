@@ -12,7 +12,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='eff_retinanet.py'
+        default='atss_swin_dyhead_50e.py'
         )
     args = parser.parse_args()
     return args
