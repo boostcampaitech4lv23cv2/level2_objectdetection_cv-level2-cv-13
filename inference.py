@@ -21,7 +21,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='retinanet_swin-t-p4-w7_fpn_1x_coco.py'
+        default='swin_dyhead_baseline_aug_randbrightnesscontrast.py'
         )
     args = parser.parse_args()
     return args
