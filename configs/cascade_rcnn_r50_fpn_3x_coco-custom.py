@@ -5,6 +5,12 @@ _base_ = [
 ]
 
 pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_small_patch4_window7_224.pth'
+class_list = ("General trash", "Paper", "Paper pack", "Metal", "Glass", 
+           "Plastic", "Styrofoam", "Plastic bag", "Battery", "Clothing")
+dataset_type = 'CocoDataset'
+data_root ='/opt/ml/dataset'
+
+
 model = dict(
     backbone=dict(
         _delete_=True,
@@ -176,7 +182,32 @@ test_pipeline = [
             dict(type='Collect', keys=['img'])
         ])
 ]
-#Wandb Config
+data = dict(
+    samples_per_gpu=2, 
+    workers_per_gpu=4,
+    train=dict(
+            classes=class_list,
+            type=dataset_type,
+            ann_file='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset/train_fold_1_of_5.json',
+            img_prefix=data_root,
+            pipeline=train_pipeline),
+    val=dict(
+        classes=class_list,
+        type=dataset_type,
+        ann_file='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset/validation_fold_1_of_5.json',
+        img_prefix=data_root,
+        pipeline=test_pipeline),
+    test=dict(
+        classes=class_list,
+        type=dataset_type,
+        ann_file=data_root + '/test.json',
+        img_prefix=data_root,
+        pipeline=test_pipeline))
+neck_name=""
+if type(model['neck'])==list:
+    neck_name="_".join([neck['type'] for neck in model['neck']])
+else:
+    neck_name=model['neck']['type'] 
 log_config=dict(
     interval=50,
     hooks = [
@@ -186,15 +217,17 @@ log_config=dict(
                 project= 'Object Detection',
                 entity = 'boostcamp-cv-13',
                 name = 'cascade_rcnn_r50_fpn_2x_coco-Augcustom',
-                # config= dict(
-                #     'optimizer_type':optimizer['type'],
-                #     'optimizer_lr':optimizer['lr'],
-                #     'neck_type':neck_name,
-                #     'lr_scheduler_type':lr_config['policy'] if lr_config != None else None,
-                #     'resize': data['train']['dataset']['pipeline'][2]['img_scale']
-                # )
+                config= {
+                    'optimizer_type':optimizer['type'],
+                    'optimizer_lr':optimizer['lr'],
+                    'neck_type': neck_name,
+                    'lr_scheduler_type':lr_config['policy'] if lr_config != None else None,
+                    'batch_size':data['samples_per_gpu'],
+                    'epoch_size':runner['max_epochs']
+                }
             ),
             log_artifact=True
+            
         )
     ]
 )
