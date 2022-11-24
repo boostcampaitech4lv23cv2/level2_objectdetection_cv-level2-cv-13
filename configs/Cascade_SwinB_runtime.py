@@ -1,19 +1,26 @@
 checkpoint_config = dict(interval=1)
-# yapf:disable
-log_config = dict(
+log_config=dict(
     interval=50,
-    hooks=[
+    hooks = [
         dict(type='TextLoggerHook'),
-        # dict(type='TensorboardLoggerHook'),
-        dict(type='WandbLoggerHook',
-                init_kwargs=dict(
-                    project= 'Inseo_Lee',
-                    name = '[Inseo9]cascadeRCNN_swin_b_ms'
-                ),
+        dict(type='WandbLoggerHook', interval=1000,
+            init_kwargs= dict(
+                project= 'Object Detection',
+                entity = 'boostcamp-cv-13',
+                name = 'cascade_rcnn_r50_fpn_3x_Albumentation',
+                config= {
+                    'optimizer_type':optimizer['type'],
+                    'optimizer_lr':optimizer['lr'],
+                    'lr_scheduler_type':lr_config['policy'] if lr_config != None else None,
+                    'batch_size':data['samples_per_gpu'],
+                    'epoch_size':runner['max_epochs']
+                }
             ),
-        dict(type='MlflowLoggerHook')
-    ])
-# yapf:enable
+            log_artifact=True
+            
+        )
+    ]
+)
 custom_hooks = [dict(type='NumClassCheckHook')]
 
 dist_params = dict(backend='nccl')
