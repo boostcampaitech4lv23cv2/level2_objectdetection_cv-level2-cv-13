@@ -5,6 +5,7 @@ from mmdet.models import build_detector
 from mmdet.apis import train_detector
 import argparse
 
+
 # set a argument parser
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -12,7 +13,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='swin_dyhead_baseline.py'
+        default='swin_dyhead_baseline_s.py'
         )
     args = parser.parse_args()
     return args
