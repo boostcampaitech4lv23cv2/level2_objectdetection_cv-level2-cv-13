@@ -1,5 +1,4 @@
 _base_ = ['/opt/ml/baseline/mmdetection/configs/_base_/default_runtime.py',
-    '/opt/ml/level2_objectdetection_cv-level2-cv-13/configs/swin_dyhead_baseline.py'
     ]
 
 pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_large_patch4_window12_384_22k.pth'  # noqa
@@ -12,6 +11,7 @@ albu_train_transforms = [
         brightness_limit=[-0.1, 0.1],
         contrast_limit=[-0.1, 0.1],
         p=0.3)]
+
 
 model = dict(
     type='ATSS',
@@ -135,6 +135,7 @@ test_pipeline = [
         img_scale=(1024,1024),
         flip=False,
         transforms=[
+            #dict(type='RandomBrightnessContrast',brightness_limit=[-0.1, 0.1],contrast_limit=[-0.1, 0.1],p=0.3),
             dict(type='Resize', keep_ratio=True, backend='pillow'),
             dict(type='RandomFlip'),
             dict(type='Normalize', **img_norm_cfg),
