@@ -105,7 +105,7 @@ test_pipeline = [
 
 # Use RepeatDataset to speed up training
 data = dict(
-    samples_per_gpu=8, 
+    samples_per_gpu=14, 
     workers_per_gpu=4,
     train=dict(
             classes=class_list,
@@ -151,7 +151,7 @@ optimizer = dict(
 #     warmup_ratio=0.001,
 #     step=[8, 11])
 lr_config=None
-runner = dict(type='EpochBasedRunner', max_epochs=12)
+runner = dict(type='EpochBasedRunner', max_epochs=35)
 
 model_name=model['backbone']['type']
 neck_name=""
