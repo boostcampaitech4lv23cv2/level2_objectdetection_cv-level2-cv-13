@@ -203,7 +203,7 @@ opt_name=optimizer['type']
 lr=optimizer['lr']
 epoch=runner['max_epochs']
 
-version=1
+version=2
 work_dir = f'/opt/ml/level2_objectdetection_cv-level2-cv-13/outputs/{model_name}_{neck_name}_{opt_name}_{lr}_{epoch}_{version}'
 
 seed=2022
