@@ -184,7 +184,7 @@ log_config=dict(
             init_kwargs= dict(
                 project= 'Object Detection',
                 entity = 'boostcamp-cv-13',
-                name = 'atss_swin_dyhead_clean_10_no_mosaic',
+                name = 'atss_swin_dyhead',
                 config= {
                     'optimizer_type':optimizer['type'],
                     'optimizer_lr':optimizer['lr'],
