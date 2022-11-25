@@ -479,3 +479,11 @@
 {"mode": "train", "epoch": 12, "iter": 1900, "lr": 5e-05, "memory": 26677, "data_time": 0.00706, "loss_cls": 0.2425, "loss_bbox": 0.33676, "loss_centerness": 0.6045, "loss": 1.18376, "time": 1.18557}
 {"mode": "train", "epoch": 12, "iter": 1950, "lr": 5e-05, "memory": 26677, "data_time": 0.00714, "loss_cls": 0.22129, "loss_bbox": 0.31395, "loss_centerness": 0.60104, "loss": 1.13628, "time": 1.20032}
 {"mode": "val", "epoch": 12, "iter": 975, "lr": 5e-05, "bbox_mAP": 0.308, "bbox_mAP_50": 0.447, "bbox_mAP_75": 0.333, "bbox_mAP_s": 0.003, "bbox_mAP_m": 0.051, "bbox_mAP_l": 0.371, "bbox_mAP_copypaste": "0.308 0.447 0.333 0.003 0.051 0.371"}
+{"hook_msgs": {}}
+{"mode": "train", "epoch": 1, "iter": 50, "lr": 5e-05, "memory": 26677, "data_time": 0.05181, "loss_cls": 1.03472, "loss_bbox": 1.01214, "loss_centerness": 0.64833, "loss": 2.6952, "time": 1.25563}
+{"mode": "train", "epoch": 1, "iter": 100, "lr": 5e-05, "memory": 26677, "data_time": 0.00627, "loss_cls": 0.85453, "loss_bbox": 1.00396, "loss_centerness": 0.63579, "loss": 2.49428, "time": 1.20654}
+{"mode": "train", "epoch": 1, "iter": 150, "lr": 5e-05, "memory": 26677, "data_time": 0.00633, "loss_cls": 0.74677, "loss_bbox": 1.00819, "loss_centerness": 0.63646, "loss": 2.39142, "time": 1.21628}
+{"mode": "train", "epoch": 1, "iter": 200, "lr": 5e-05, "memory": 26677, "data_time": 0.00622, "loss_cls": 0.71042, "loss_bbox": 1.03296, "loss_centerness": 0.63767, "loss": 2.38105, "time": 1.21712}
+{"mode": "train", "epoch": 1, "iter": 250, "lr": 5e-05, "memory": 26677, "data_time": 0.00659, "loss_cls": 0.69545, "loss_bbox": 0.98584, "loss_centerness": 0.63276, "loss": 2.31405, "time": 1.19906}
+{"mode": "train", "epoch": 1, "iter": 300, "lr": 5e-05, "memory": 26677, "data_time": 0.00689, "loss_cls": 0.635, "loss_bbox": 0.93179, "loss_centerness": 0.62951, "loss": 2.19631, "time": 1.28369}
+{"mode": "train", "epoch": 1, "iter": 350, "lr": 5e-05, "memory": 26677, "data_time": 0.00671, "loss_cls": 0.62981, "loss_bbox": 0.95236, "loss_centerness": 0.6333, "loss": 2.21548, "time": 1.23729}
