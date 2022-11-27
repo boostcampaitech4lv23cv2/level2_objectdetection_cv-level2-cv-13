@@ -13,7 +13,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='swin_dyhead_baseline_s.py'
+        default='swin_t_dyhead_baseline_thr_change.py'
         )
     args = parser.parse_args()
     return args
