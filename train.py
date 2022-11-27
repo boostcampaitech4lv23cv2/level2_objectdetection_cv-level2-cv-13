@@ -2,9 +2,8 @@
 from mmcv import Config
 from mmdet.datasets import build_dataset
 from mmdet.models import build_detector
-from mmdet.apis import train_detector
+from mmdet.apis import train_detector, set_random_seed
 import argparse
-
 
 # set a argument parser
 def parse_args():
@@ -13,7 +12,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='swin_dyhead_baseline_s.py'
+        default='swin_dyhead_baseline_reappear.py'
         )
     args = parser.parse_args()
     return args
@@ -28,4 +27,5 @@ if __name__ == "__main__":
     # 모델 build 및 pretrained network 불러오기
     model = build_detector(cfg.model)
     model.init_weights()
+    set_random_seed(2022, deterministic= True)
     train_detector(model, datasets, cfg, distributed=False, validate=True)
