@@ -1081,11 +1081,3 @@
 {"mode": "train", "epoch": 12, "iter": 1950, "lr": 5e-05, "memory": 26677, "data_time": 0.00714, "loss_cls": 0.22129, "loss_bbox": 0.31395, "loss_centerness": 0.60104, "loss": 1.13628, "time": 1.20032}
 {"mode": "val", "epoch": 12, "iter": 975, "lr": 5e-05, "bbox_mAP": 0.308, "bbox_mAP_50": 0.447, "bbox_mAP_75": 0.333, "bbox_mAP_s": 0.003, "bbox_mAP_m": 0.051, "bbox_mAP_l": 0.371, "bbox_mAP_copypaste": "0.308 0.447 0.333 0.003 0.051 0.371"}
 {"hook_msgs": {}}
-{"mode": "train", "epoch": 1, "iter": 50, "lr": 5e-05, "memory": 26675, "data_time": 0.05097, "loss_cls": 1.00091, "loss_bbox": 1.00767, "loss_centerness": 0.64554, "loss": 2.65412, "time": 1.2288}
-{"hook_msgs": {}}
-{"hook_msgs": {}}
-{"mode": "train", "epoch": 1, "iter": 50, "lr": 5e-05, "memory": 26677, "data_time": 0.05057, "loss_cls": 1.01811, "loss_bbox": 1.06822, "loss_centerness": 0.64776, "loss": 2.73409, "time": 1.21242}
-{"hook_msgs": {}}
-{"hook_msgs": {}}
-{"hook_msgs": {}}
-{"hook_msgs": {}}

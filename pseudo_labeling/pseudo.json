@@ -1,0 +1,71 @@
+{
+    "info": {
+        "year": 2021,
+        "version": "1.0",
+        "description": "Recycle Trash",
+        "contributor": "Upstage",
+        "url": null,
+        "date_captured": "2021-02-02 01:10:00"
+    },
+    "licenses": [
+        {
+            "id": 0,
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/deed.ast"
+        }
+    ],
+    "images": [],
+    "categories": [
+        {
+            "id": 0,
+            "name": "General trash",
+            "supercategory": "General trash"
+        },
+        {
+            "id": 1,
+            "name": "Paper",
+            "supercategory": "Paper"
+        },
+        {
+            "id": 2,
+            "name": "Paper pack",
+            "supercategory": "Paper pack"
+        },
+        {
+            "id": 3,
+            "name": "Metal",
+            "supercategory": "Metal"
+        },
+        {
+            "id": 4,
+            "name": "Glass",
+            "supercategory": "Glass"
+        },
+        {
+            "id": 5,
+            "name": "Plastic",
+            "supercategory": "Plastic"
+        },
+        {
+            "id": 6,
+            "name": "Styrofoam",
+            "supercategory": "Styrofoam"
+        },
+        {
+            "id": 7,
+            "name": "Plastic bag",
+            "supercategory": "Plastic bag"
+        },
+        {
+            "id": 8,
+            "name": "Battery",
+            "supercategory": "Battery"
+        },
+        {
+            "id": 9,
+            "name": "Clothing",
+            "supercategory": "Clothing"
+        }
+    ],
+    "annotations": []
+}
