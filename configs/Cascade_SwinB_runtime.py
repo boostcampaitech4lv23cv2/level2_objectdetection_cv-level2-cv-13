@@ -1,4 +1,5 @@
 checkpoint_config = dict(interval=1)
+
 # log_config=dict(
 #     interval=50,
 #     hooks = [
@@ -21,6 +22,7 @@ checkpoint_config = dict(interval=1)
 #         )
 #     ]
 # )
+
 custom_hooks = [dict(type='NumClassCheckHook')]
 
 dist_params = dict(backend='nccl')
