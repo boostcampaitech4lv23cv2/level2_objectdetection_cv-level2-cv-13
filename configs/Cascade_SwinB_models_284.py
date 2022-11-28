@@ -1,4 +1,4 @@
-pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22kto1k.pth'  # noqa
+pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22kto1k.pth'
 
 model = dict(
     type='CascadeRCNN',
@@ -184,4 +184,4 @@ model = dict(
         rcnn=dict(
             score_thr=0.001,
             nms=dict(type='nms', iou_threshold=0.5),
-            max_per_img=100)))
+            max_per_img=150)))
