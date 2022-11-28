@@ -19,7 +19,7 @@ albu_train_transforms = [
 ]
 
 img_norm_cfg = dict(
-    mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
+    mean=[109.629, 103.211, 96.742], std=[51.046, 50.947, 55.714], to_rgb=True)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations', with_bbox=True),
@@ -86,21 +86,21 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset/train_fold_1_of_5.json',
+        ann_file='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset/train_fold_5_of_5.json',
         img_prefix=data_root,
         pipeline=train_pipeline,
         classes=classes,
         ),
     val=dict(
         type=dataset_type,
-        ann_file='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset/validation_fold_1_of_5.json',
+        ann_file='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset/validation_fold_5_of_5.json',
         img_prefix=data_root,
         pipeline=val_pipeline,
         classes=classes,
         ),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + 'test.json',
+        ann_file='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset/validation_fold_1_of_5.json',
         img_prefix=data_root,
         pipeline=test_pipeline,
         classes=classes,
