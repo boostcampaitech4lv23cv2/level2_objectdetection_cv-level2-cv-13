@@ -1,4 +1,4 @@
-pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22kto1k.pth'  # noqa
+pretrained = 'https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window12_384_22kto1k.pth'
 
 model = dict(
     type='CascadeRCNN',
@@ -7,7 +7,7 @@ model = dict(
         embed_dims=128,
         depths=[2, 2, 18, 2],
         num_heads=[4, 8, 16, 32],
-        window_size=7,
+        window_size=12,
         mlp_ratio=4,
         qkv_bias=True,
         qk_scale=None,

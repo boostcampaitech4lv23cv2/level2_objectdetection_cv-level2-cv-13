@@ -7,4 +7,3 @@ ensemble_result/*
 wandb/*
 nohup.out
 artifacts/
-outputs/

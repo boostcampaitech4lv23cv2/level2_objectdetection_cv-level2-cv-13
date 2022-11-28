@@ -1,20 +1,20 @@
 _base_ = [
     './Cascade_SwinB_models.py',
     './Cascade_SwinB_dataset.py',
-    './Cascade_SwinB_schedule.py', './Cascade_SwinB_runtime.py'
+    './Cascade_SwinB_runtime.py'
 ]
 
 # 총 epochs 사이즈
-runner = dict(max_epochs=12)
-checkpoint_config = dict(max_keep_ckpts=3, interval=1)
+checkpoint_config = dict(max_keep_ckpts=1, interval=1)
 
 
 # samples_per_gpu -> batch size라 생각하면 됨
 data = dict(
-    samples_per_gpu=4,
-    workers_per_gpu=2)
+    samples_per_gpu=2,
+    workers_per_gpu=4)
 
 checkpoint_config = dict(interval=-1)
+optimizer_config = dict(grad_clip=None)
 optimizer = dict(
     type='AdamW',
     lr=0.0001,
@@ -34,11 +34,12 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=1099,
     warmup_ratio=0.001,
-    periods=[5495, 5495, 6594, 8792, 8792],
-    restart_weights=[1, 0.85, 0.75, 0.7, 0.6],
+    periods=[5495, 5495, 6594, 6594, 8792, 8792, 13188, 13188, 26376, 26376],
+    restart_weights=[1, 0.85, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5, 0.45, 0.4],
     by_epoch=False,
     min_lr=5e-6
     )
+runner = dict(type='EpochBasedRunner', max_epochs=30)
 
 #Wandb Config
 log_config=dict(
@@ -49,10 +50,11 @@ log_config=dict(
             init_kwargs= dict(
                 project= 'Object Detection',
                 entity = 'boostcamp-cv-13',
-                name = 'cascade_rcnn_r50_fpn_3x_Albumentation',
+                name = 'casscade_rcnn_swin_l',
                 config= {
-                    'optimizer_type':optimizer['type'],
+                    'optimizer_type':'AdamW',
                     'optimizer_lr':optimizer['lr'],
+                    'neck_type':'FPN',
                     'lr_scheduler_type':lr_config['policy'] if lr_config != None else None,
                     'batch_size':data['samples_per_gpu'],
                     'epoch_size':runner['max_epochs']
@@ -63,15 +65,18 @@ log_config=dict(
         )
     ]
 )
+
 #best metric
 evaluation = dict(interval=1, metric='bbox',save_best='bbox_mAP_50')
 seed=42
 gpu_ids=[0]
 model_name = 'Cascade RCNN'
 neck_name = 'FPN'
-opt_name=optimizer['type']
 lr=optimizer['lr']
 epoch=runner['max_epochs']
-version=1 
-work_dir = f'/opt/ml/level2_objectdetection_cv-level2-cv-13/outputs/{model_name}_{neck_name}_{opt_name}_{lr}_{epoch}_{version}'
+version=1
+work_dir = f'/opt/ml/level2_objectdetection_cv-level2-cv-13/outputs/{model_name}_{neck_name}_AdamW_{lr}_{epoch}_{version}'
 device='cuda'
+log_level = 'INFO'
+resume_from = None
+load_from = None
