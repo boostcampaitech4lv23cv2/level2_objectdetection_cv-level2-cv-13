@@ -22,12 +22,12 @@ def parse_args():
         '--iou-thr',
         type= float,
         help='The threshold of IoU to ensemble.',
-        default= 0.8)
+        default= 0.65)
     parser.add_argument(
         '--skip-box-thr',
         type= float,
         help='The threshold of confidence to skip.',
-        default= 0.0001)
+        default= 0.001)
     parser.add_argument(
         '--sigma',
         type= float,
