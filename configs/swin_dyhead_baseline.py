@@ -184,7 +184,7 @@ log_config=dict(
             init_kwargs= dict(
                 project= 'Object Detection',
                 entity = 'boostcamp-cv-13',
-                name = 'atss_swin_dyhead',
+                name = 'atss_swin_dyhead_s',
                 config= {
                     'optimizer_type':optimizer['type'],
                     'optimizer_lr':optimizer['lr'],
@@ -203,7 +203,7 @@ opt_name=optimizer['type']
 lr=optimizer['lr']
 epoch=runner['max_epochs']
 
-version=1
+version=2
 work_dir = f'/opt/ml/level2_objectdetection_cv-level2-cv-13/outputs/{model_name}_{neck_name}_{opt_name}_{lr}_{epoch}_{version}'
 
 seed=2022
