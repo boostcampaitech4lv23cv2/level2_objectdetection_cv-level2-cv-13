@@ -47,7 +47,7 @@ def make_submission():
     submission = pd.DataFrame()
     submission['PredictionString'] = prediction_strings
     submission['image_id'] = file_names
-    submission.to_csv(os.path.join(cfg.work_dir, f'submission_{args.configs}.csv'), index=None)
+    submission.to_csv(os.path.join(cfg.work_dir, f'base_submission_{args.configs}.csv'), index=None)
 
 if __name__ == "__main__":
     args = parse_args()
@@ -66,7 +66,7 @@ if __name__ == "__main__":
         workers_per_gpu=cfg.data.workers_per_gpu,
         dist=False,
         shuffle=False)
-
+    
     # checkpoint path
     checkpoint_path = os.path.join(cfg.work_dir, 'best_bbox_mAP_50_epoch_12.pth')
     model = build_detector(cfg.model, test_cfg=cfg.get('test_cfg')) # build detector
