@@ -21,7 +21,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='swin_dyhead_baseline_aug_randbrightnesscontrast.py'
+        default='swin_dyhead_baseline_lr_config_cosinerestart.py'
         )
     args = parser.parse_args()
     return args

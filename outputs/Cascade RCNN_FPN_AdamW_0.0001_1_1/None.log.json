@@ -1,0 +1,2 @@
+{"hook_msgs": {}}
+{"mode": "train", "epoch": 1, "iter": 50, "lr": 0.0, "memory": 25597, "data_time": 0.05765, "loss_rpn_cls": 0.68028, "loss_rpn_bbox": 0.04354, "s0.loss_cls": 1.18109, "s0.acc": 73.98633, "s0.loss_bbox": 0.03174, "s1.loss_cls": 0.64376, "s1.acc": 70.78027, "s1.loss_bbox": 0.00891, "s2.loss_cls": 0.39034, "s2.acc": 57.76758, "s2.loss_bbox": 0.00107, "loss": 2.98074, "time": 1.37289}
