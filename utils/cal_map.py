@@ -173,6 +173,7 @@ def calculate_map(GT_JSON, PRED_CSV, IOU_threshold):
     
     print("mean_ap")
     print(mean_ap)
+    print((mean_ap_0+mean_ap_1+mean_ap_2+mean_ap_3+mean_ap_4+mean_ap_5+mean_ap_6+mean_ap_7+mean_ap_8+mean_ap_9)/10)
 
 
 # set a argument parser
@@ -182,12 +183,12 @@ def parse_args():
         '--json',
         type=str,
         help='The config file which train model',
-        default='/opt/ml/level2_objectdetection_cv-level2-cv-13/stratified_fold_dataset/validation_fold_1_of_5.json'
+        default='/opt/ml/level2_objectdetection_cv-level2-cv-13/fold_dataset/test_val.json'
         )
     parser.add_argument(
         '--csv',
         type=str,
-        default='/opt/ml/level2_objectdetection_cv-level2-cv-13/outputs/SwinTransformer_FPN_DyHead/submission_best_bbox_mAP_epoch_26_valid.csv'
+        default='/opt/ml/level2_objectdetection_cv-level2-cv-13/outputs/SwinTransformer_FPN_DyHead/test_val.csv'
     )
     parser.add_argument(
         '--iou_threshold',

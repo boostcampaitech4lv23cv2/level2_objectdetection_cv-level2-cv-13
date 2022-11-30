@@ -39,7 +39,7 @@ lr_config = dict(
     by_epoch=False,
     min_lr=5e-6
     )
-runner = dict(type='EpochBasedRunner', max_epochs=30)
+runner = dict(type='EpochBasedRunner', max_epochs=15)
 
 #Wandb Config
 log_config=dict(
@@ -50,7 +50,7 @@ log_config=dict(
             init_kwargs= dict(
                 project= 'Object Detection',
                 entity = 'boostcamp-cv-13',
-                name = 'casscade_rcnn_swin_l',
+                name = 'casscade_rcnn_swin_l_kfold3',
                 config= {
                     'optimizer_type':'AdamW',
                     'optimizer_lr':optimizer['lr'],
