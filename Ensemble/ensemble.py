@@ -22,7 +22,7 @@ def parse_args():
         '--iou-thr',
         type= float,
         help='The threshold of IoU to ensemble.',
-        default= 0.65)
+        default= 0.625)
     parser.add_argument(
         '--skip-box-thr',
         type= float,

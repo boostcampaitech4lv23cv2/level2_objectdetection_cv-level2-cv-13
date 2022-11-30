@@ -21,7 +21,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='swin_dyhead_baseline_lr_config_cosinerestart.py'
+        default='cascade_rcnn_r50_fpn_3x_coco-custom.py'
         )
     args = parser.parse_args()
     return args
@@ -56,6 +56,7 @@ if __name__ == "__main__":
     cfg.gpu_ids = [0]
     cfg.optimizer_config.grad_clip = dict(max_norm=35, norm_type=2)
     cfg.model.train_cfg = None
+    cfg.work_dir = './work_dirs/cascade_maskrcnn_swinb384_3x_pseudo0.5_3e_f4_fix'
     # build_dataset
     dataset = build_dataset(cfg.data.test)
     
@@ -68,9 +69,9 @@ if __name__ == "__main__":
         shuffle=False)
 
     # checkpoint path
-    checkpoint_path = os.path.join(cfg.work_dir, 'best_bbox_mAP_50_epoch_12.pth')
+    checkpoint_path = os.path.join(cfg.work_dir, 'best_bbox_mAP_epoch_2.pth')
     model = build_detector(cfg.model, test_cfg=cfg.get('test_cfg')) # build detector
-    checkpoint = load_checkpoint(model, checkpoint_path, map_location='cpu') # ckpt load
+    checkpoint = load_checkpoint(model, checkpoint_path, map_location='cuda') # ckpt load
     model.CLASSES = dataset.CLASSES
     model = MMDataParallel(model.cuda(), device_ids=[0])
 
