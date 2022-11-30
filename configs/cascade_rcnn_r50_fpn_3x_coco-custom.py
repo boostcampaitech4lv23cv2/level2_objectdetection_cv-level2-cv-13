@@ -17,7 +17,7 @@ data = dict(
 checkpoint_config = dict(interval=-1)
 optimizer = dict(
     type='AdamW',
-    lr=0.00005,
+    lr=0.000025,
     betas=(0.9, 0.999),
     weight_decay=0.05,
     paramwise_cfg=dict(
@@ -43,7 +43,7 @@ optimizer = dict(
 lr_config = None
 
 #Wandb Config
-log_config=dict(
+'''log_config=dict(
     interval=50,
     hooks = [
         dict(type='TextLoggerHook'),
@@ -51,7 +51,7 @@ log_config=dict(
             init_kwargs= dict(
                 project= 'Object Detection',
                 entity = 'boostcamp-cv-13',
-                name = 'cascade_rcnn_swinB384_2X_Pseudo_0.975_e3_f4_with_train',
+                name = '',
                 config= {
                     'optimizer_type':optimizer['type'],
                     'optimizer_lr':optimizer['lr'],
@@ -64,7 +64,32 @@ log_config=dict(
             
         )
     ]
-)
+)'''
+# 오류 시 baseline/mmdetection/mmdet/core/hook/wandblogger_hook.py에서
+# 379번째줄 if mask is not None: >>> if mask[0] is not None:으로 변경
+
+log_config = dict(hooks = [
+    dict(type='TextLoggerHook'),
+    dict(type='MMDetWandbHook',
+        init_kwargs={
+            'project': 'Object Detection',
+            'entity' : 'boostcamp-cv-13',
+            'name' : 'cascade_rcnn_swinB384_2X_Pseudo_0.975_e3_f4_with_train_lr0_000025',
+            'config' : {
+                    'optimizer_type':optimizer['type'],
+                    'optimizer_lr':optimizer['lr'],
+                    'lr_scheduler_type':lr_config['policy'] if lr_config != None else None,
+                    'batch_size': data['samples_per_gpu'],
+                    'epoch_size': runner['max_epochs'],
+                }
+            },
+        
+        log_checkpoint=True,
+        log_checkpoint_metadata=True,
+        num_eval_images=100,
+        log_artifact=True)
+        ])
+
 #best metric
 evaluation = dict(interval=1, metric='bbox',save_best='bbox_mAP_50')
 seed=42

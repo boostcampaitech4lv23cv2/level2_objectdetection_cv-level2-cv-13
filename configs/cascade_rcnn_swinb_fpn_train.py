@@ -3,7 +3,7 @@
 from mmcv import Config
 from mmdet.datasets import build_dataset
 from mmdet.models import build_detector
-from mmdet.apis import train_detector
+from mmdet.apis import train_detector, set_random_seed
 from mmdet.datasets import (build_dataloader, build_dataset,
                             replace_ImageToTensor)
 from mmdet.utils import get_device
@@ -41,7 +41,7 @@ cfg. workers_per_gpu = 4
 
 cfg.seed = 42
 cfg.gpu_ids = [0]
-cfg.work_dir = './work_dirs/cascade_maskrcnn_swinb384_3x_pseudo0.975_3e_f4_fix_with_train'
+cfg.work_dir = './work_dirs/cascade_rcnn_swinB384_2X_Pseudo_0.975_e3_f4_with_train_lr0_000025'
 
 
 cfg.evaluation.save_best='auto'
@@ -59,6 +59,7 @@ meta['config'] = cfg.pretty_text
 datasets = [build_dataset(cfg.data.train)]
 
 # 모델 build 및 pretrained network 불러오기
+set_random_seed(42,deterministic=True)
 model = build_detector(cfg.model)
 model.init_weights()
 checkpoint = load_checkpoint(model, '/opt/ml/Cascade_swinb_384_best_bbox_mAP_epoch_18.pth', map_location='cuda')
