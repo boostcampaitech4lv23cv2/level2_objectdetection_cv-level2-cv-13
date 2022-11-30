@@ -28,4 +28,4 @@ if __name__ == "__main__":
     # 모델 build 및 pretrained network 불러오기
     model = build_detector(cfg.model)
     model.init_weights()
-    train_detector(model, datasets, cfg, distributed=False, validate=True)
+    train_detector(model, datasets, cfg, distributed=False, validate=True, meta)
