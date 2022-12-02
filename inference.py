@@ -3,7 +3,7 @@ from mmcv import Config
 from mmdet.datasets import (build_dataloader, build_dataset,
                             replace_ImageToTensor)
 from mmdet.models import build_detector
-from mmdet.apis import single_gpu_test
+from mmdet.apis import single_gpu_test, set_random_seed
 from mmcv.runner import load_checkpoint
 import os
 from mmcv.parallel import MMDataParallel
@@ -21,7 +21,7 @@ def parse_args():
         '--configs',
         type=str,
         help='The config file which train model',
-        default='swin_dyhead_baseline_lr_config_cosinerestart.py'
+        default='cascade_rcnn_r50_fpn_3x_coco-custom.py'
         )
     args = parser.parse_args()
     return args
@@ -56,6 +56,7 @@ if __name__ == "__main__":
     cfg.gpu_ids = [0]
     cfg.optimizer_config.grad_clip = dict(max_norm=35, norm_type=2)
     cfg.model.train_cfg = None
+    cfg.work_dir = './work_dirs/cascade_maskrcnn_swinb384_3x_pseudo0.5_3e_f4_fix'
     # build_dataset
     dataset = build_dataset(cfg.data.test)
     
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     checkpoint = load_checkpoint(model, checkpoint_path, map_location='cuda') # ckpt load
     model.CLASSES = dataset.CLASSES
     model = MMDataParallel(model.cuda(), device_ids=[0])
-
+    set_random_seed(2022, deterministic= True)
     output = single_gpu_test(model, data_loader, show_score_thr=0.5) # output 계산
 
     make_submission()
