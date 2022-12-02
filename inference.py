@@ -3,7 +3,7 @@ from mmcv import Config
 from mmdet.datasets import (build_dataloader, build_dataset,
                             replace_ImageToTensor)
 from mmdet.models import build_detector
-from mmdet.apis import single_gpu_test
+from mmdet.apis import single_gpu_test, set_random_seed
 from mmcv.runner import load_checkpoint
 import os
 from mmcv.parallel import MMDataParallel
@@ -47,7 +47,7 @@ def make_submission():
     submission = pd.DataFrame()
     submission['PredictionString'] = prediction_strings
     submission['image_id'] = file_names
-    submission.to_csv(os.path.join(cfg.work_dir, f'submission_{args.configs}.csv'), index=None)
+    submission.to_csv(os.path.join(cfg.work_dir, f'base_submission_{args.configs}.csv'), index=None)
 
 if __name__ == "__main__":
     args = parse_args()
@@ -67,14 +67,14 @@ if __name__ == "__main__":
         workers_per_gpu=cfg.data.workers_per_gpu,
         dist=False,
         shuffle=False)
-
+    
     # checkpoint path
     checkpoint_path = os.path.join(cfg.work_dir, 'best_bbox_mAP_epoch_2.pth')
     model = build_detector(cfg.model, test_cfg=cfg.get('test_cfg')) # build detector
     checkpoint = load_checkpoint(model, checkpoint_path, map_location='cuda') # ckpt load
     model.CLASSES = dataset.CLASSES
     model = MMDataParallel(model.cuda(), device_ids=[0])
-
+    set_random_seed(2022, deterministic= True)
     output = single_gpu_test(model, data_loader, show_score_thr=0.5) # output 계산
 
     make_submission()
