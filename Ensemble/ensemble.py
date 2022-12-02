@@ -12,7 +12,7 @@ def parse_args():
         '--csv-root',
         type=str,
         help='The csv root of prediction results',
-        default='/opt/ml/level2_objectdetection_cv-level2-cv-13/Ensemble/submission_files')
+        default='/opt/ml/new_ensmble')
     parser.add_argument(
         '--out-dir',
         type=str,
@@ -22,12 +22,12 @@ def parse_args():
         '--iou-thr',
         type= float,
         help='The threshold of IoU to ensemble.',
-        default= 0.65)
+        default= 0.6)
     parser.add_argument(
         '--skip-box-thr',
         type= float,
         help='The threshold of confidence to skip.',
-        default= 0.001)
+        default= 0.00005)
     parser.add_argument(
         '--sigma',
         type= float,

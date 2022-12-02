@@ -1,7 +1,7 @@
 _base_ = [
-    './Cascade_SwinB_models.py',
-    './Cascade_SwinB_dataset.py',
-    './Cascade_SwinB_runtime.py'
+    './Cascade_SwinB_models_swin_l.py',
+    './Cascade_SwinB_dataset_swin_l.py',
+    './Cascade_SwinB_runtime_swin_l.py'
 ]
 
 # 총 epochs 사이즈
@@ -39,7 +39,7 @@ lr_config = dict(
     by_epoch=False,
     min_lr=5e-6
     )
-runner = dict(type='EpochBasedRunner', max_epochs=15)
+runner = dict(type='EpochBasedRunner', max_epochs=12)
 
 #Wandb Config
 log_config=dict(
@@ -50,7 +50,7 @@ log_config=dict(
             init_kwargs= dict(
                 project= 'Object Detection',
                 entity = 'boostcamp-cv-13',
-                name = 'casscade_rcnn_swin_l_kfold3',
+                name = 'casscade_rcnn_swin_l_kfold1',
                 config= {
                     'optimizer_type':'AdamW',
                     'optimizer_lr':optimizer['lr'],
