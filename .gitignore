@@ -1,0 +1,10 @@
+Ensemble/submission_files/*
+ensemble_result/*
+*.pth
+.DS_Store
+*.log
+*.wandb
+wandb/*
+nohup.out
+artifacts/
+Ensemble/temp/
