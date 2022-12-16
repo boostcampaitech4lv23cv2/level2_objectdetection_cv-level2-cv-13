@@ -98,7 +98,7 @@
 ### <img src="https://img.icons8.com/ios-filled/500/notion.png" alt="drawing" width="16"/> Notion
 - 노션을 이용하여 실험결과등을 정리
 - 회의록을 매일 기록하여 일정을 관리
-- 가설 설정및 결과 분석등을 기록
+- 가설 설정 및 결과 분석 등을 기록
 - 캘린더를 사용하여 주간 일정 관리
 
 ### <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/atlassian_jira_logo_icon_170511.png" alt="drawing" width="16"/> Jira
@@ -126,9 +126,9 @@ mim install mmdet
 
 ## 🎉Results🎉
 >### Public LB : 5th (mAP 0.7019)
-![images](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5b818cff-d49f-4aef-928e-7b33124f5f84/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221212%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221212T065252Z&X-Amz-Expires=86400&X-Amz-Signature=d31b84369e2007409ab78dbdfb8ea7d944597175b15a66127f3814bab901d301&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![images](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5b818cff-d49f-4aef-928e-7b33124f5f84/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221216%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221216T095515Z&X-Amz-Expires=86400&X-Amz-Signature=6b5679e778d371da8774460620d8518d41d24f73d56ce4dc114dcd762a741580&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 >### Private LB : 5th (mAP 0.6871)
-![images](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/37782bf4-cb09-4970-b2cf-378e814f9e5f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221212%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221212T065337Z&X-Amz-Expires=86400&X-Amz-Signature=09b243216325e37595d22b76204c255e577daf81fa61eb73d1b3aeb44db7651f&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![images](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/37782bf4-cb09-4970-b2cf-378e814f9e5f/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221216%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221216T095451Z&X-Amz-Expires=86400&X-Amz-Signature=be091942b43d5b18366b8ea0a7ea39d4bda3bd355d5783affbc7eb92c7ce9077&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
 
 ## 📌Please Look at our Wrap-Up Report for more details
 [![image](https://user-images.githubusercontent.com/62556539/200262300-3765b3e4-0050-4760-b008-f218d079a770.png)](https://www.notion.so/Wrap-up-Report-d2fbd966d5cf418483aef20acfc0443e)
